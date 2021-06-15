@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Posts</title>
+  </head>
+  <body>
+    <h1 style="font-family: monospace">Recent Posts</h1>
+    {% for post in posts %}
+    <div style="background-color: beige; margin-bottom: 20px; padding: 30px">
+      {% if post.is_edited %}
+      <div style="display: flex; justify-content: space-between">
+        <h3 style="font-family: monospace; font-size: 20px">{{post.title}}</h3>
+        <h5
+          style="
+            text-align: right;
+            font-family: monospace;
+            font-style: italic;
+            font-size: 10px;
+          "
+        >
+          --Edited--
+        </h5>
+      </div>
+      {% else %}
+      <h3 style="font-family: monospace; font-size: 20px">{{post.title}}</h3>
+      {% endif %} {% if post.image %}
+      <img src="{{post.image.url}}" style="width: 200px; margin-left: 30px" />
+      {% else %}
+      <p
+        style="
+          margin-left: 30px;
+          font-family: monospace;
+          font-style: italic;
+          font-size: 10px;
+        "
+      >
+        "Boy they didn't add an image to me"
+      </p>
+      {% endif %}
+      <p style="font-family: monospace; font-size: 14px">
+        {{post.description}}
+      </p>
+      <h4
+        style="
+          text-align: right;
+          font-family: monospace;
+          font-style: italic;
+          font-size: 10px;
+        "
+      >
+        -{{post.date_time}}
+      </h4>
+    </div>
+    {% endfor %}
+  </body>
+</html>
